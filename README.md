@@ -1,10 +1,4 @@
-# Student UI
-
-## Branches
-
-**Master** - Main development branch.
-
-**Template** - Branch containing the unmodified vuexy template. When the template updates, push the updates to this branch and merge into master.
+# Heylo Teacher Console
 
 ## Project Setup
 
