@@ -1,8 +1,8 @@
 <template>
   <b-card>
-    <b-card-title class="mb-1"> Live Reaction </b-card-title>
+    <b-card-title class="mb-1"> Responses to Prompts </b-card-title>
     <b-card-sub-title class="mb-2">
-      Ratio of reactions from the past 5 minutes
+      Responses to a prompt sent at {{ promptTime }}
     </b-card-sub-title>
 
     <vue-apex-charts
@@ -29,6 +29,8 @@ export default {
   },
   props: {
     sessionId: String,
+    promptId: String,
+    promptTime: Date,
   },
   data() {
     return {
@@ -86,15 +88,12 @@ export default {
   },
   created() {
     this.connectsession()
-    setInterval(()=> {
-      this.reactions = this.reactions.filter(x => +new Date() - x.timestamp < 1000 * 60 * 5)
-    }, 5000);
   },
   methods: {
     countReactions(reaction) {
       return this.reactions.filter(
         x =>
-          x.reaction === reaction && +new Date() - x.timestamp < 1000 * 60 * 5
+          x.reaction === reaction && x.question === this.promptId
       ).length
     },
     connectsession() {

@@ -2,14 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // Routes
-import { canNavigate } from '@/libs/acl/routeProtection'
-import {
-  isUserLoggedIn,
-  getUserData,
-  getHomeRouteForLoggedInUser,
-} from '@/auth/utils'
-import liveFeed from './routes/live-feed'
-import historyAnalysis from './routes/history-analysis'
 
 Vue.use(VueRouter)
 
@@ -21,33 +13,27 @@ const router = new VueRouter({
   },
   routes: [
     { path: '/', redirect: { name: 'live-feed' } },
-    ...historyAnalysis,
-    ...liveFeed,
+    {
+      path: '/live-feed',
+      name: 'live-feed',
+      component: () => import('@/views/live-feed/LiveFeed.vue'),
+      meta: {
+        pageTitle: 'Live Feed'
+      }
+    },
+    {
+      path: '/history-analysis',
+      name: 'history-analysis',
+      component: () => import('@/views/history-analysis/HistoryAnalysis.vue'),
+      meta: {
+        pageTitle: 'History Analysis'
+      }
+    },
     {
       path: '*',
-      redirect: 'error-404',
-    },
-  ],
-})
-
-router.beforeEach((to, _, next) => {
-  const isLoggedIn = isUserLoggedIn()
-
-  if (!canNavigate(to)) {
-    // Redirect to login if not logged in
-    if (!isLoggedIn) return next({ name: 'auth-login' })
-
-    // If logged in => not authorized
-    return next({ name: 'misc-not-authorized' })
-  }
-
-  // Redirect if logged in
-  if (to.meta.redirectIfLoggedIn && isLoggedIn) {
-    const userData = getUserData()
-    next(getHomeRouteForLoggedInUser(userData ? userData.role : null))
-  }
-
-  return next()
+      redirect: 'error-404'
+    }
+  ]
 })
 
 export default router

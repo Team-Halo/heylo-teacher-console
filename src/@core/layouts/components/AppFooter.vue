@@ -1,7 +1,7 @@
 <template>
   <p class="clearfix mb-0">
-    <span class="float-md-right d-none d-md-block"
-      >Hand-crafted &amp; Made with
+
+    <span class="float-md-right d-none d-md-block">Made by Team Halo
       <feather-icon
         icon="HeartIcon"
         size="21"
