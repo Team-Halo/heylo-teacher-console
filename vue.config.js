@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  publicPath: '',
+  publicPath: '/heylo-teacher-console',
   css: {
     loaderOptions: {
       sass: {
