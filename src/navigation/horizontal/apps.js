@@ -1,90 +1,98 @@
 export default [
   {
-    header: 'Apps',
-    icon: 'PackageIcon',
+    header: "Apps",
+    icon: "PackageIcon",
     children: [
       {
-        title: 'Email',
-        route: 'apps-email',
-        icon: 'MailIcon',
+        title: "Previous Analysis",
+        route: "apps-previous-analysis",
+        icon: "BarChart2Icon",
       },
       {
-        title: 'Chat',
-        route: 'apps-chat',
-        icon: 'MessageSquareIcon',
+        title: "Email",
+        route: "apps-email",
+        icon: "MailIcon",
       },
       {
-        title: 'Todo',
-        route: 'apps-todo',
-        icon: 'CheckSquareIcon',
+        title: "Chat",
+        route: "apps-chat",
+        icon: "MessageSquareIcon",
       },
       {
-        title: 'Calendar',
-        route: 'apps-calendar',
-        icon: 'CalendarIcon',
+        title: "Todo",
+        route: "apps-todo",
+        icon: "CheckSquareIcon",
       },
       {
-        title: 'Invoice',
-        icon: 'FileTextIcon',
+        title: "Calendar",
+        route: "apps-calendar",
+        icon: "CalendarIcon",
+      },
+      {
+        title: "Invoice",
+        icon: "FileTextIcon",
         children: [
           {
-            title: 'List',
-            route: 'apps-invoice-list',
+            title: "List",
+            route: "apps-invoice-list",
           },
           {
-            title: 'Preview',
-            route: { name: 'apps-invoice-preview', params: { id: 4987 } },
+            title: "Preview",
+            route: { name: "apps-invoice-preview", params: { id: 4987 } },
           },
           {
-            title: 'Edit',
-            route: { name: 'apps-invoice-edit', params: { id: 4987 } },
+            title: "Edit",
+            route: { name: "apps-invoice-edit", params: { id: 4987 } },
           },
           {
-            title: 'Add',
-            route: { name: 'apps-invoice-add' },
+            title: "Add",
+            route: { name: "apps-invoice-add" },
           },
         ],
       },
       {
-        title: 'eCommerce',
-        icon: 'ShoppingCartIcon',
+        title: "eCommerce",
+        icon: "ShoppingCartIcon",
         children: [
           {
-            title: 'Shop',
-            route: 'apps-e-commerce-shop',
+            title: "Shop",
+            route: "apps-e-commerce-shop",
           },
           {
-            title: 'Details',
-            route: { name: 'apps-e-commerce-product-details', params: { slug: 'apple-watch-series-5-27' } },
+            title: "Details",
+            route: {
+              name: "apps-e-commerce-product-details",
+              params: { slug: "apple-watch-series-5-27" },
+            },
           },
           {
-            title: 'Wishlist',
-            route: 'apps-e-commerce-wishlist',
+            title: "Wishlist",
+            route: "apps-e-commerce-wishlist",
           },
           {
-            title: 'Checkout',
-            route: 'apps-e-commerce-checkout',
+            title: "Checkout",
+            route: "apps-e-commerce-checkout",
           },
         ],
       },
       {
-        title: 'User',
-        icon: 'UserIcon',
+        title: "User",
+        icon: "UserIcon",
         children: [
           {
-            title: 'List',
-            route: 'apps-users-list',
+            title: "List",
+            route: "apps-users-list",
           },
           {
-            title: 'View',
-            route: { name: 'apps-users-view', params: { id: 21 } },
+            title: "View",
+            route: { name: "apps-users-view", params: { id: 21 } },
           },
           {
-            title: 'Edit',
-            route: { name: 'apps-users-edit', params: { id: 21 } },
+            title: "Edit",
+            route: { name: "apps-users-edit", params: { id: 21 } },
           },
         ],
       },
     ],
   },
-]
+];
