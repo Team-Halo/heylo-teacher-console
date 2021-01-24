@@ -102,7 +102,6 @@ export default {
       ).length
     },
     connectsession() {
-      console.log(`connect ${this.sessionId}`)
       const id = this.sessionId
       const reactionsRef = db.ref(`sessions/${this.sessionId}/reactions`)
       reactionsRef.on('value', snapshot => {

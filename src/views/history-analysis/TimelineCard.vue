@@ -39,14 +39,6 @@ export default {
       apexChatData,
     }
   },
-  computed: {
-    dateTime: () => {
-      console.log(this.time)
-      const dateObject = new Date(this.time)
-      console.log(dateObject)
-      return dateObject.toLocaleString()
-    },
-  },
 }
 </script>
 

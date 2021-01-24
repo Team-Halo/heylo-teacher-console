@@ -92,12 +92,10 @@ export default {
   methods: {
     countReactions(reaction) {
       return this.reactions.filter(
-        x =>
-          x.reaction === reaction && x.question === this.promptId
+        x => x.reaction === reaction && x.question === this.promptId
       ).length
     },
     connectsession() {
-      console.log(`connect ${this.sessionId}`)
       const id = this.sessionId
       const reactionsRef = db.ref(`sessions/${this.sessionId}/reactions`)
       reactionsRef.on('value', snapshot => {
@@ -107,10 +105,10 @@ export default {
       })
     },
     onReactionUpdate(data) {
-      this.reactions = [];
+      this.reactions = []
       // eslint-disable-next-line
       for (let reactionId in data) {
-        this.reactions.push(data[reactionId]);
+        this.reactions.push(data[reactionId])
       }
     },
   },
