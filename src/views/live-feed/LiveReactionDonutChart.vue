@@ -86,15 +86,19 @@ export default {
   },
   created() {
     this.connectsession()
-    setInterval(()=> {
-      this.reactions = this.reactions.filter(x => +new Date() - x.timestamp < 1000 * 60 * 5)
-    }, 5000);
+    setInterval(() => {
+      this.reactions = this.reactions.filter(
+        x => +new Date() - x.timestamp < 1000 * 60 * 5 && x.question == null
+      )
+    }, 5000)
   },
   methods: {
     countReactions(reaction) {
       return this.reactions.filter(
         x =>
-          x.reaction === reaction && +new Date() - x.timestamp < 1000 * 60 * 5
+          x.reaction === reaction &&
+          +new Date() - x.timestamp < 1000 * 60 * 5 &&
+          x.question == null
       ).length
     },
     connectsession() {
@@ -108,10 +112,10 @@ export default {
       })
     },
     onReactionUpdate(data) {
-      this.reactions = [];
+      this.reactions = []
       // eslint-disable-next-line
       for (let reactionId in data) {
-        this.reactions.push(data[reactionId]);
+        this.reactions.push(data[reactionId])
       }
     },
   },
