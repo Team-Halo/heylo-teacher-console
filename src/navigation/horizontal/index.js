@@ -26,12 +26,12 @@ route: [route_obj/route_name] (I have to resolve name somehow from the route obj
 // Array of sections
 export default [
   {
-    header: 'Live Feed',
+    title: 'Live Feed',
     route: 'live-feed',
     icon: 'HomeIcon'
   },
   {
-    header: 'History Analysis',
+    title: 'History Analysis',
     route: 'history-analysis',
     icon: 'BarChart2Icon'
   }
