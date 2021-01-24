@@ -1,10 +1,10 @@
 <template>
   <b-row class="match-height">
     <b-col md="6">
-      <new-session-card />
+      <new-session-card @newsession="newsession" />
     </b-col>
     <b-col md="6">
-      <live-reaction-donut-chart />
+      <live-reaction-donut-chart v-if="inSession" :session-id="sessionId" />
     </b-col>
   </b-row>
 </template>
@@ -20,6 +20,18 @@ export default {
     BCol,
     NewSessionCard,
     LiveReactionDonutChart,
+  },
+  data() {
+    return {
+      sessionId: null,
+      inSession: false,
+    }
+  },
+  methods: {
+    newsession(sessionid) {
+      this.sessionId = sessionid
+      this.inSession = true;
+    },
   },
 }
 </script>

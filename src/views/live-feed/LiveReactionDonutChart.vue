@@ -9,7 +9,7 @@
       type="donut"
       height="350"
       :options="chartOptions"
-      :series="[0, 23, 65, 34]"
+      :series="chartSeries"
     />
   </b-card>
 </template>
@@ -17,6 +17,7 @@
 <script>
 import { BCard, BCardTitle, BCardSubTitle } from 'bootstrap-vue'
 import VueApexCharts from 'vue-apexcharts'
+import db from '@/libs/firebase'
 import defaultChartOptions from './donutChartOptions'
 
 export default {
@@ -26,11 +27,32 @@ export default {
     BCardTitle,
     BCardSubTitle,
   },
+  props: {
+    sessionId: String,
+  },
   data() {
-    return {}
+    return {
+      reactionsCount: {
+        faster: 0,
+        slower: 0,
+        interested: 0,
+        sleepy: 0,
+        confused: 0,
+      },
+    }
   },
   computed: {
+    chartSeries() {
+      return [
+        this.reactionsCount.faster,
+        this.reactionsCount.slower,
+        this.reactionsCount.interested,
+        this.reactionsCount.sleepy,
+        this.reactionsCount.confused,
+      ]
+    },
     chartOptions() {
+      const self = this
       return {
         ...defaultChartOptions,
         plotOptions: {
@@ -55,13 +77,43 @@ export default {
                   fontSize: '1.5rem',
                   label: 'Total',
                   formatter() {
-                    return '12'
+                    return self.chartSeries.reduce(
+                      (prev, curr) => prev + curr,
+                      0
+                    )
                   },
                 },
               },
             },
           },
         },
+      }
+    },
+  },
+  created() {
+    this.connectsession()
+  },
+  methods: {
+    connectsession() {
+      console.log(`connect ${this.sessionId}`)
+      const id = this.sessionId
+      const reactionsRef = db.ref(`sessions/${this.sessionId}/reactions`)
+      reactionsRef.on('value', snapshot => {
+        if (this.sessionId !== id) return
+        const data = snapshot.val()
+        this.onReactionUpdate(data)
+      })
+    },
+    onReactionUpdate(data) {
+      this.reactionsCount.connect = 0
+      this.reactionsCount.faster = 0
+      this.reactionsCount.slower = 0
+      this.reactionsCount.interested = 0
+      this.reactionsCount.sleepy = 0
+      this.reactionsCount.confused = 0
+      // eslint-disable-next-line
+      for (let reactionId in data) {
+        this.reactionsCount[data[reactionId].reaction] += 1
       }
     },
   },
