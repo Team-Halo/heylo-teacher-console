@@ -4,6 +4,11 @@ export default [
     icon: 'PackageIcon',
     children: [
       {
+        title: 'Previous Analysis',
+        route: 'apps-previous-analysis',
+        icon: 'BarChart2Icon',
+      },
+      {
         title: 'Email',
         route: 'apps-email',
         icon: 'MailIcon',
@@ -55,7 +60,10 @@ export default [
           },
           {
             title: 'Details',
-            route: { name: 'apps-e-commerce-product-details', params: { slug: 'apple-watch-series-5-27' } },
+            route: {
+              name: 'apps-e-commerce-product-details',
+              params: { slug: 'apple-watch-series-5-27' },
+            },
           },
           {
             title: 'Wishlist',
