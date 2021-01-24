@@ -5,12 +5,13 @@
     >
       <vue-apex-charts
         type="donut"
-        height="350"
         :options="apexChatData.donutChart.chartOptions"
-        :series="apexChatData.donutChart.series"
+        :series="ratio"
       />
-      <h6>{{ text }}</h6>
-      <large class="text-muted"> 08:00</large>
+      <div class="card">
+        <p class="card-block">{{ text }}</p>
+      </div>
+      <strong class="time-text">{{ time }}</strong>
     </div>
   </app-timeline-item>
 </template>
@@ -27,12 +28,42 @@ export default {
     AppTimelineItem,
     VueApexCharts,
   },
+  props: {
+    text: String,
+    time: Number,
+    ratio: Array,
+  },
   directives: { 'b-toggle': VBToggle, 'b-tooltip': VBTooltip, Ripple },
   data() {
     return {
       apexChatData,
-      text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
     }
+  },
+  computed: {
+    dateTime: () => {
+      console.log(this.time)
+      const dateObject = new Date(this.time)
+      console.log(dateObject)
+      return dateObject.toLocaleString()
+    },
   },
 }
 </script>
+
+<style>
+.card {
+  overflow: hidden;
+  width: 65%;
+  background-color: 'transparent';
+}
+.card-block {
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 18px;
+  line-height: 30px;
+}
+.time-text {
+  font-size: 15px;
+}
+</style>

@@ -4,14 +4,13 @@ const chartColors = {
     series1: '#ffc600',
     series2: '#00d4bd',
     series3: '#826bf8',
-    // series4: '#2b9bf4',
+    series4: '#2b9bf4',
     series5: '#FFA1A1'
   }
 }
 
 export default {
   donutChart: {
-    series: [10, 20, 20, 50],
     chartOptions: {
       legend: {
         show: false,
@@ -21,9 +20,10 @@ export default {
       },
       colors: [
         chartColors.donut.series1,
-        chartColors.donut.series5,
+        chartColors.donut.series2,
         chartColors.donut.series3,
-        chartColors.donut.series2
+        chartColors.donut.series4,
+        chartColors.donut.series5
       ],
       dataLabels: {
         enabled: false,
@@ -54,18 +54,16 @@ export default {
               total: {
                 show: true,
                 fontSize: '1.5rem',
-                label: 'Operational',
-                formatter(val) {
-                  return val
-                  // eslint-disable-next-line radix
-                  // return w.globals.seriesTotals.reduce((a, b) => return a + b, 0)
+                label: 'Emotion',
+                formatter(w) {
+                  return `${Math.max(...w.globals.series)}%`
                 }
               }
             }
           }
         }
       },
-      labels: ['Sleepy', 'Neutral', 'Confused', 'Happy'],
+      labels: ['Sleepy', 'Faster', 'Slower', 'Confused', 'Interested'],
       responsive: [
         {
           breakpoint: 992,
