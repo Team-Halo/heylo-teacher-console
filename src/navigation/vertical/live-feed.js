@@ -1,12 +1,7 @@
 export default [
   {
     title: 'Live Feed',
+    route: 'live-feed',
     icon: 'HomeIcon',
-    children: [
-      {
-        title: 'Live Feed',
-        route: 'live-feed',
-      },
-    ],
   },
 ]

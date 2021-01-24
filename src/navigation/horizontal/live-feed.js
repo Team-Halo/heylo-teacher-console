@@ -1,13 +1,7 @@
 export default [
   {
     header: 'Live Feed',
+    route: 'live-feed',
     icon: 'HomeIcon',
-    children: [
-      {
-        title: 'Live Feed',
-        route: 'live-feed',
-        icon: 'ActivityIcon',
-      },
-    ],
   },
 ]

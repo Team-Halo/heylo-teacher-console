@@ -41,10 +41,6 @@
     >
       <b-dropdown variant="link" no-caret toggle-class="p-0" right>
         <template #button-content>
-          <b-dropdown-item :to="{ name: 'apps-previous-analysis' }">
-            <feather-icon icon="BarChart2Icon" size="16" />
-            <span class="align-middle ml-50">Previous Analysis</span>
-          </b-dropdown-item>
           <b-button
             v-ripple.400="'rgba(255, 255, 255, 0.15)'"
             variant="primary"
