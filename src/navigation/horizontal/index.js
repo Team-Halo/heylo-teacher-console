@@ -23,8 +23,16 @@ title
 route: [route_obj/route_name] (I have to resolve name somehow from the route obj)
 
 */
-import historyAnalysis from './history-analysis'
-import liveFeed from './live-feed'
-
 // Array of sections
-export default [...liveFeed, ...historyAnalysis]
+export default [
+  {
+    header: 'Live Feed',
+    route: 'live-feed',
+    icon: 'HomeIcon'
+  },
+  {
+    header: 'History Analysis',
+    route: 'history-analysis',
+    icon: 'BarChart2Icon'
+  }
+]

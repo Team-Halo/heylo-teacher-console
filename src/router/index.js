@@ -3,9 +3,6 @@ import VueRouter from 'vue-router'
 
 // Routes
 
-import liveFeed from './routes/live-feed'
-import historyAnalysis from './routes/history-analysis'
-
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -16,13 +13,27 @@ const router = new VueRouter({
   },
   routes: [
     { path: '/', redirect: { name: 'live-feed' } },
-    ...historyAnalysis,
-    ...liveFeed,
+    {
+      path: '/live-feed',
+      name: 'live-feed',
+      component: () => import('@/views/live-feed/LiveFeed.vue'),
+      meta: {
+        pageTitle: 'Live Feed'
+      }
+    },
+    {
+      path: '/history-analysis',
+      name: 'history-analysis',
+      component: () => import('@/views/history-analysis/HistoryAnalysis.vue'),
+      meta: {
+        pageTitle: 'History Analysis'
+      }
+    },
     {
       path: '*',
-      redirect: 'error-404',
-    },
-  ],
+      redirect: 'error-404'
+    }
+  ]
 })
 
 export default router

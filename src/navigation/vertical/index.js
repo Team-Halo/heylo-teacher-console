@@ -30,8 +30,17 @@ tag
 tagVariant
 
 */
-import historyAnalysis from './history-analysis'
-import liveFeed from './live-feed'
 
 // Array of sections
-export default [...liveFeed, ...historyAnalysis]
+export default [
+  {
+    title: 'Live Feed',
+    route: 'live-feed',
+    icon: 'HomeIcon'
+  },
+  {
+    title: 'History Analysis',
+    route: 'history-analysis',
+    icon: 'BarChart2Icon'
+  }
+]
