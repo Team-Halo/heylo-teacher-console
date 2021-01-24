@@ -17,7 +17,7 @@
 <script>
 import { BCard, BCardTitle, BCardSubTitle } from 'bootstrap-vue'
 import VueApexCharts from 'vue-apexcharts'
-import chartOptions from './donutChartOptions'
+import defaultChartOptions from './donutChartOptions'
 
 export default {
   components: {
@@ -27,9 +27,43 @@ export default {
     BCardSubTitle,
   },
   data() {
-    return {
-      chartOptions,
-    }
+    return {}
+  },
+  computed: {
+    chartOptions() {
+      return {
+        ...defaultChartOptions,
+        plotOptions: {
+          pie: {
+            donut: {
+              labels: {
+                show: true,
+                name: {
+                  fontSize: '2rem',
+                  fontFamily: 'Montserrat',
+                },
+                value: {
+                  fontSize: '1rem',
+                  fontFamily: 'Montserrat',
+                  formatter(val) {
+                    // eslint-disable-next-line radix
+                    return `${parseInt(val)}%`
+                  },
+                },
+                total: {
+                  show: true,
+                  fontSize: '1.5rem',
+                  label: 'Total',
+                  formatter() {
+                    return '12'
+                  },
+                },
+              },
+            },
+          },
+        },
+      }
+    },
   },
 }
 </script>

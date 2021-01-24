@@ -4,10 +4,10 @@
     class="card-session color-primary"
   >
     <b-card-header>
-      <b-card-title>Start a Session</b-card-title>
+      <b-card-title>Start a Lesson</b-card-title>
     </b-card-header>
     <b-card-body>
-      <p>Press the button to start a new session. Share this code to students for them to join the session.</p>
+      <p>Press the button to start a new lesson. Share this code to students for them to join the lesson.</p>
       <!-- form -->
       <b-form>
         <b-row>
@@ -21,7 +21,7 @@
                 id="session-id"
                 v-model="sessionId"
                 readonly
-                placeholder="Start a session to get the code"
+                placeholder="Start a lesson to get the code"
               />
             </b-form-group>
           </b-col>
@@ -31,12 +31,13 @@
               block
               variant="primary"
             >
-              New Session
+              New Lesson
             </b-button>
           </b-col>
         </b-row>
       </b-form>
       <!--/ form -->
+      <p class="mt-1">Starting the lesson will also start the voice recording.</p>
     </b-card-body>
   </b-card>
 </template>
