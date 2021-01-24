@@ -30,7 +30,7 @@ export default {
   },
   props: {
     text: String,
-    time: Number,
+    time: String,
     ratio: Array,
   },
   directives: { 'b-toggle': VBToggle, 'b-tooltip': VBTooltip, Ripple },
