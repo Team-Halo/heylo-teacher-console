@@ -3,7 +3,11 @@ import VueRouter from 'vue-router'
 
 // Routes
 import { canNavigate } from '@/libs/acl/routeProtection'
-import { isUserLoggedIn, getUserData, getHomeRouteForLoggedInUser } from '@/auth/utils'
+import {
+  isUserLoggedIn,
+  getUserData,
+  getHomeRouteForLoggedInUser,
+} from '@/auth/utils'
 import apps from './routes/apps'
 import dashboard from './routes/dashboard'
 import uiElements from './routes/ui-elements/index'
@@ -11,6 +15,7 @@ import pages from './routes/pages'
 import chartsMaps from './routes/charts-maps'
 import formsTable from './routes/forms-tables'
 import others from './routes/others'
+import liveFeed from './routes/live-feed'
 
 Vue.use(VueRouter)
 
@@ -29,6 +34,7 @@ const router = new VueRouter({
     ...formsTable,
     ...uiElements,
     ...others,
+    ...liveFeed,
     {
       path: '*',
       redirect: 'error-404',

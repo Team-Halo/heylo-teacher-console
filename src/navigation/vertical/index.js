@@ -36,6 +36,7 @@ import others from './others'
 import chartsAndMaps from './charts-and-maps'
 import uiElements from './ui-elements'
 import formAndTable from './forms-and-table'
+import liveFeed from './live-feed'
 
 // Array of sections
-export default [...dashboard, ...appsAndPages, ...uiElements, ...formAndTable, ...chartsAndMaps, ...others]
+export default [...liveFeed, ...dashboard, ...appsAndPages, ...uiElements, ...formAndTable, ...chartsAndMaps, ...others]
